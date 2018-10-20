@@ -62,8 +62,8 @@
     <td>${response.birthday}</td>
   </tr>
 </table>`
-         target = document.getElementById("results");
-         target.innerHTML = results;
+  target = document.getElementById("results");
+  target.innerHTML = results;
        }
      });
    }
@@ -93,8 +93,9 @@
 
       <img src="https://i.gifer.com/A2V.gif" width="300" height="auto">
       <br><br>
-      <fb:login-button id="fb-btn" scope="public_profile,id,name,email,birthday,gender,hometown,location,tagged_places" onlogin="checkLoginState();"> Login to test </fb:login-button>
-      <p id="results">testtest</p>
+      <fb:login-button scope="" onlogin="checkLoginState();"> Login to test </fb:login-button><br>
+    
+      <p id="results"></p>
 
     </div>
 
