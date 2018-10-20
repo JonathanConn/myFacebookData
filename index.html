@@ -1,0 +1,103 @@
+<html style="background-color:  #f39c12">
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '341934493032318',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   function statusChangeCallback(response){
+     if(response.status === 'connected'){
+       console.log('Authenticated')
+       testAPI();
+     }else{
+       console.log('Not Authenticated')
+     }
+   }
+
+   function checkLoginState() {
+     FB.getLoginStatus(function(response) {
+       statusChangeCallback(response);
+     });
+   }
+
+   function testAPI(){
+     FB.api('/me?fields=id,name,email,birthday,gender,hometown,location,tagged_places', function(response){
+       if(response && !response.errror ){
+         console.log(response);
+
+         results = `<h2>Your information:</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>info</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>${response.name}</td>
+  </tr>
+  <tr>
+    <td>email</td>
+    <td>${response.email}</td>
+  </tr>
+  <tr>
+    <td>birthday</td>
+    <td>${response.birthday}</td>
+  </tr>
+</table>`
+         target = document.getElementById("results");
+         target.innerHTML = results;
+       }
+     });
+   }
+
+
+
+   function Logout(){
+     FB.logout(function(response){
+
+     });
+   }
+
+
+
+</script>
+
+  <head>
+
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+
+    <h1 id="Title"> SafeBook </h1>
+
+    <div id="Login">
+
+      <img src="https://i.gifer.com/A2V.gif" width="300" height="auto">
+      <br><br>
+      <fb:login-button id="fb-btn" scope="public_profile,id,name,email,birthday,gender,hometown,location,tagged_places" onlogin="checkLoginState();"> Login to test </fb:login-button>
+      <p id="results">testtest</p>
+
+    </div>
+
+
+  </body>
+</html>
