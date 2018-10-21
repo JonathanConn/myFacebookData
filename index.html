@@ -71,9 +71,8 @@
 
 
    function Logout(){
-     FB.logout(function(response){
-
-     });
+     FB.logout(function(response){});
+     console.log('log out');
    }
 
 
@@ -94,7 +93,7 @@
       <img src="https://i.gifer.com/A2V.gif" width="300" height="auto">
       <br><br>
       <fb:login-button scope="" onlogin="checkLoginState();"> Login to test </fb:login-button><br>
-      <button style="display: inline; background-color: darkblue; color: white" type-"button" >Log Out </button>
+      <button style="display: inline; background-color: darkblue; color: white;" type = "button"; onclick= "Logout()"; >Log Out </button>
 
       <br>
       <p id="results"></p>
